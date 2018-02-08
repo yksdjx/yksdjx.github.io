@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yksdjx.github.io">
-  <title>...</title>
+  <title>Archives: 2018/2 | ...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="...">
-<meta property="og:url" content="https://yksdjx.github.io/index.html">
+<meta property="og:url" content="https://yksdjx.github.io/archives/2018/02/index.html">
 <meta property="og:site_name" content="...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="...">
@@ -151,343 +151,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="前端-node-express-websocket" class="article article-type-前端  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/08/node-express-websocket/">node express websocket</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/08/node-express-websocket/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-前端">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/02/08/node-express-websocket/" class="archive-article-date">
   	<time datetime="2018-02-08T10:53:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>===</p>
-<h3 id="Websocket-是什么？"><a href="#Websocket-是什么？" class="headerlink" title="Websocket 是什么？"></a>Websocket 是什么？</h3><p>–网络定义:<br><a href="https://zh.wikipedia.org/zh-cn/WebSocket" target="_blank" rel="noopener">WebSocket</a>是HTML5开始提供的一种浏览器与服务器间进行全双工通讯的网络技术。 WebSocket通信协议于2011年被IETF定为标准RFC 6455，WebSocketAPI被W3C定为标准。 在WebSocket API中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/img/websocket.png" alt="http-webSocket"></h2><h2 id="客户端🌰"><a href="#客户端🌰" class="headerlink" title="客户端🌰"></a>客户端🌰</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">"wss://echo.websocket.org"</span>);</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection open ..."</span>); </span><br><span class="line">  ws.send(<span class="string">"Hello WebSockets!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"Received Message: "</span> + evt.data);</span><br><span class="line">  <span class="comment">//ws.close();</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection closed."</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="进入正题-node-express-搭建-webSocket-服务"><a href="#进入正题-node-express-搭建-webSocket-服务" class="headerlink" title="进入正题 node express 搭建 webSocket 服务"></a>进入正题 node express 搭建 webSocket 服务</h2><p> 引用 express-ws;<br> npm install express-ws –save</p>
-<p> router/index.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">let</span> expressWs = <span class="built_in">require</span>(<span class="string">'express-ws'</span>)(express);</span><br><span class="line"><span class="keyword">let</span> router = express.Router();</span><br><span class="line"></span><br><span class="line">router.ws(<span class="string">'/xxxx/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ws, req</span>) </span>&#123;</span><br><span class="line">  ws.on(<span class="string">'message'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">    ws.send(<span class="string">'reply your message'</span>+msg);</span><br><span class="line">  &#125;);</span><br><span class="line">  ws.on(<span class="string">'close'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">evnt</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'closed'</span>)</span><br><span class="line">  &#125;);</span><br><span class="line">  ws.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">evnt</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(evnt)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/08/node-express-websocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="前端-browsers-work" class="article article-type-前端  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/23/browsers-work/">browsers_work</a>
+      <a class="archive-article-title" href="/2018/02/08/node-express-websocket/">node express websocket</a>
     </h1>
   
 
-        
-        <a href="/2018/01/23/browsers-work/" class="archive-article-date">
-  	<time datetime="2018-01-23T12:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为什么要了解浏览器加载、解析、渲染这个过程？</p>
-<p>好，我们先说一下，为什么要了解这些呢？如果想写出一个最佳实践的页面，就要好好了解。</p>
-<p>了解浏览器如何进行加载，可以在引用外部样式文件，外部js时，将他们放到合适的位置，使浏览器以最快的速度将文件加载完毕。<br>了解浏览器如何进行解析，可以在构建DOM结构，组织css选择器时，选择最优的写法，提高浏览器的解析速率。<br>了解浏览器如何进行渲染，明白渲染的过程，在设置元素属性，编写js文件时，可以减少”reflow“”repaint“的消耗。<br>正文开始</p>
-<p>一、浏览器的主要功能</p>
-<p>　　浏览器的主要功能是将用户选择的web资源呈现出来，它需要从服务器请求资源，并将其显示在浏览器窗口中，资源的格式通常是HTML，也包括PDF、image及其他格式。用户用URI（Uniform Resource Identifier统一资源标识符）来指定所请求资源的位置，通过DNS查询，将网址转换为IP地址。整个浏览器工作的流程，之前博客中有论述：<br>　　1、输入网址。<br>　　2、浏览器查找域名的IP地址。<br>　　3. 浏览器给web服务器发送一个HTTP请求<br>　　4. 网站服务的永久重定向响应<br>　　5. 浏览器跟踪重定向地址 现在，浏览器知道了要访问的正确地址，所以它会发送另一个获取请求。<br>　　6. 服务器“处理”请求，服务器接收到获取请求，然后处理并返回一个响应。<br>　　7. 服务器发回一个HTML响应<br>　　8. 浏览器开始显示HTML<br>　　9. 浏览器发送请求，以获取嵌入在HTML中的对象。在浏览器显示HTML时，它会注意到需要获取其他地址内容的标签。这时，浏览器会发送一个获取请求来重新获得这些文件。这些文件就包括CSS/JS/图片等资源，这些资源的地址都要经历一个和HTML读取类似的过程。所以浏览器会在DNS中查找这些域名，发送请求，重定向等等…</p>
-<p>那么，一个页面，究竟是如何从我们输入一个网址到最后完整的呈现在我们面前的呢？还需要了解一下浏览器是如何渲染的：</p>
-<p>二、浏览器的渲染</p>
-<p>下面是渲染引擎在取得内容之后的基本流程：<br> <img src="http://img.blog.csdn.net/20160724092250385" alt="Alt text"><br>　解析html以构建dom树 -&gt; 构建render树 -&gt; 布局render树 -&gt; 绘制render树<br>先来看个图：</p>
-<p>这里写图片描述</p>
-<p>所以，浏览器会解析三个东西：<br>（1） HTML/SVG/XHTML，解析这三种文件会产生一个 DOM Tree。<br>（2） CSS，解析 CSS 会产生 CSS 规则树。<br>（3） Javascript脚本，主要是通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 CSS Rule Tree.</p>
-<p>我今天又纠结了一上午，到底是怎么解析怎么渲染的，我的疑问在于，浏览器到底是先解析生成了DOM树，然后再加载CSS JS文件进行渲染，还是在生成DOM的过程中，遇到了 link script 然后就加载CSS JS，边加载边渲染。我有这种疑问的原因在于，看网上的帖子，说的根本不一样好嘛！ 比如这篇 我想说，这个写的让我直接懵逼，真的是直接懵逼啊，学习的过程中，总会遇到困难，但这次，让我真的好难啊。不过正因为不懂才继续查资料继续学习嘛 ==！我又查了一上午，自己测试测试测试，然后觉着，我好像是明白点了。真的推荐大家去认真看《how browsers work》这篇文章，学习不懂得知识的时候，还是要从比较权威的资料看起比较好，也不要像我今天这样，无头苍蝇乱查。</p>
-<p>那么就来说一下图中的过程，我是按照自己的理解来说，如果有误，欢迎指正。</p>
-<p>当浏览器获得一个html文件时，会“自上而下”加载，并在加载过程中进行解析渲染。<br>解析： </p>
-<ol>
-<li>浏览器会将HTML解析成一个DOM树，DOM 树的构建过程是一个深度遍历过程：当前节点的所有子节点都构建好后才会去构建当前节点的下一个兄弟节点。 </li>
-<li>将CSS解析成 CSS Rule Tree 。 </li>
-<li>根据DOM树和CSSOM来构造 Rendering Tree。注意：Rendering Tree 渲染树并不等同于 DOM 树，因为一些像 Header 或 display:none 的东西就没必要放在渲染树中了。<br>这里写图片描述<br><img src="http://img.blog.csdn.net/20160724103859664" alt="Alt text"><br>4.有了Render Tree，浏览器已经能知道网页中有哪些节点、各个节点的CSS定义以及他们的从属关系。下一步操作称之为Layout，顾名思义就是计算出每个节点在屏幕中的位置。<br>5.再下一步就是绘制，即遍历render树，并使用UI后端层绘制每个节点。<br>重点来了：</li>
-</ol>
-<p>　　上述这个过程是逐步完成的，为了更好的用户体验，渲染引擎将会尽可能早的将内容呈现到屏幕上，并不会等到所有的html都解析完成之后再去构建和布局render树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。（这段话是《how browsers work》里面讲的，让我茅塞顿开）</p>
-<p>几个概念：<br>（1）Reflow（回流）：浏览器要花时间去渲染，当它发现了某个部分发生了变化影响了布局，那就需要倒回去重新渲染。<br>（2）Repaint（重绘）：如果只是改变了某个元素的背景颜色，文字颜色等，不影响元素周围或内部布局的属性，将只会引起浏览器的repaint，重画某一部分。<br>Reflow要比Repaint更花费时间，也就更影响性能。所以在写代码的时候，要尽量避免过多的Reflow。</p>
-<p>reflow的原因：</p>
-<p>（1）页面初始化的时候；<br>（2）操作DOM时；<br>（3）某些元素的尺寸变了；<br>（4）如果 CSS 的属性发生变化了。</p>
-<p>减少 reflow/repaint</p>
-<p>　（1）不要一条一条地修改 DOM 的样式。与其这样，还不如预先定义好 css 的 class，然后修改 DOM 的 className。<br>　（2）不要把 DOM 结点的属性值放在一个循环里当成循环里的变量。<br>　（3）为动画的 HTML 元件使用 fixed 或 absoult 的 position，那么修改他们的 CSS 是不会 reflow 的。<br>　（4）千万不要使用 table 布局。因为可能很小的一个小改动会造成整个 table 的重新布局。</p>
-<p>我应该是已经把网上所有的关于浏览器加载 解析 渲染过程的文章都看全了，其中写的比较好的一个版本是下面这个：</p>
-<p>HTML页面加载和解析流程 </p>
-<ol>
-<li>用户输入网址（假设是个html页面，并且是第一次访问），浏览器向服务器发出请求，服务器返回html文件； </li>
-<li>浏览器开始载入html代码，发现＜head＞标签内有一个＜link＞标签引用外部CSS文件； </li>
-<li>浏览器又发出CSS文件的请求，服务器返回这个CSS文件； </li>
-<li>浏览器继续载入html中＜body＞部分的代码，并且CSS文件已经拿到手了，可以开始渲染页面了； </li>
-<li>浏览器在代码中发现一个＜img＞标签引用了一张图片，向服务器发出请求。此时浏览器不会等到图片下载完，而是继续渲染后面的代码； </li>
-<li>服务器返回图片文件，由于图片占用了一定面积，影响了后面段落的排布，因此浏览器需要回过头来重新渲染这部分代码； </li>
-<li>浏览器发现了一个包含一行Javascript代码的＜script＞标签，赶快运行它； </li>
-<li>Javascript脚本执行了这条语句，它命令浏览器隐藏掉代码中的某个＜div＞ （style.display=”none”）。突然少了这么一个元素，浏览器不得不重新渲染这部分代码； </li>
-<li>终于等到了＜/html＞的到来，浏览器泪流满面…… </li>
-<li>等等，还没完，用户点了一下界面中的“换肤”按钮，Javascript让浏览器换了一下＜link＞标签的CSS路径； </li>
-<li>浏览器召集了在座的各位＜div＞＜span＞＜ul＞＜li＞们，“大伙儿收拾收拾行李，咱得重新来过……”，浏览器向服务器请求了新的CSS文件，重新渲染页面。<br>与讨论主题相关的其他思考</li>
-</ol>
-<p>编写CSS时应该注意：</p>
-<p>CSS选择符是从右到左进行匹配的。从右到左！所以，#nav li 我们以为这是一条很简单的规则，秒秒钟就能匹配到想要的元素，但是，但是，但是，是从右往左匹配啊，所以，会去找所有的li，然后再去确定它的父元素是不是#nav。，因此，写css的时候需要注意：</p>
-<p>dom深度尽量浅。<br>减少inline javascript、css的数量。<br>使用现代合法的css属性。<br>不要为id选择器指定类名或是标签，因为id可以唯一确定一个元素。<br>避免后代选择符，尽量使用子选择符。原因：子元素匹配符的概率要大于后代元素匹配符。后代选择符;#tp p{} 子选择符：#tp&gt;p{}<br>避免使用通配符，举一个例子，.mod .hd *{font-size:14px;} 根据匹配顺序,将首先匹配通配符,也就是说先匹配出通配符,然后匹配.hd（就是要对dom树上的所有节点进行遍历他的父级元素）,然后匹配.mod,这样的性能耗费可想而知.<br>关于script标签的位置</p>
-<p>现在，我们大都会将script标签放在body结束标签之前，那原因是什么呢？我今天也做了一个测试。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>测试js代码位置<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var item = document.getElementById("item");</span></span><br><span class="line"><span class="undefined">        cosole.log(item);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"item"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span></span><br><span class="line">        你好</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>上述代码中有一段js代码，要在控制台打印一个元素，我把script标签放在head里，控制台里打印出来的是null。<br>这里写图片描述<br><img src="http://img.blog.csdn.net/20160724160506056" alt="alt text"><br>我又把js代码放在body结束标签之前，打印出来的就是div元素了<br><img src="http://img.blog.csdn.net/20160724160558713" alt="alt text"></p>
-<p>所以，通过这个简单的例子我们可以看到，js代码在加载完后，是立即执行的。<br>我又做了一个测试，在js代码里面写了一个死循环，把它放在head标签中，</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>测试js代码位置<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var item = document.getElementById("item");</span></span><br><span class="line"><span class="undefined">        while(true)&#123;</span></span><br><span class="line"><span class="undefined">            console.log(1);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"item"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span></span><br><span class="line">        你好</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>页面是这样的：<br><img src="http://img.blog.csdn.net/20160724160946952" alt="alt text"></p>
-<p>一直在执行那个打印1的死循环，后面的body都没有加载渲染出来。所以，这个小例子，我们可以看出，js的下载和执行会阻塞Dom树的构建。</p>
-<p>所以，Javascript的加载和执行的特点：<br>（1）载入后马上执行；<br>（2）执行时会阻塞页面后续的内容（包括页面的渲染、其它资源的下载）。原因：因为浏览器需要一个稳定的DOM树结构，而JS中很有可能有 代码直接改变了DOM树结构，比如使用 document.write 或 appendChild,甚至是直接使用的location.href进行跳转，浏览器为了防止出现JS修 改DOM树，需要重新构建DOM树的情况，所以 就会阻塞其他的下载和呈现。</p>
-<p>减少 JavaScript 对性能的影响的方法：</p>
-<p>将所有的script标签放到页面底部，也就是body闭合标签之前，这能确保在脚本执行前页面已经完成了DOM树渲染。<br>尽可能地合并脚本。页面中的script标签越少，加载也就越快，响应也越迅速。无论是外链脚本还是内嵌脚本都是如此。<br>采用无阻塞下载 JavaScript 脚本的方法：<br>（1）使用script标签的 defer 属性（仅适用于 IE 和 Firefox 3.5 以上版本）；<br>（2）使用动态创建的script元素来下载并执行代码;</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/23/browsers-work/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="前端-first" class="article article-type-前端  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/first/">first</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/first/" class="archive-article-date">
-  	<time datetime="2018-01-16T08:03:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如何处理IE和Firefox如果处理事件兼容性</p>
-<p>获取事件<br>function et(e) {<br>    let event = window.event || e<br>}<br>键盘值的获取： Firfox下event.which和IE的event.keyCode相当<br>let key = event.keyCode || event.which<br>事件源的获取：<br>let target = event.srcElement || event.target<br>事件监听:<br>IE: element.attacthEvent(‘on’ + eventName, function(){})<br>Firfox: element.addEventListener(eventName, handler, false)<br>鼠标位置： 在IE下，event对象有x、y属性，在Firfox下，event有PageX, PageY属性 所有获取鼠标位置时：<br>x = event.x || event.pageX<br>阻止默认浏览器行为：<br>e.preventDefault() || event.returnValue = false<br>阻止冒泡事件：<br>e.stopPropagation() || event.cancelBubble = true<br>获取下拉框中选中项的内容</p>
-<p><select id="test" name=""><br>    <option value="1">text 1</option><br>    <option value="2">text 2</option><br></select><br>拿到选中项的索引：<br>let index = document.getElementById(‘test’).selectIndex.<br>selectIndex表示选中项的index<br>在Form表单中get和post方式提交的区别</p>
-<p>这个问题一直在争论，我就觉得明明一句话解决的问题，非要弄得这么复杂。这是书上的答案：<br>1、get是从服务器上获取数据，post是向服务器提交数据<br>2、get是把参数数据提交到表单的action属性所指的URL中，值和表单各个字段一一对应。post是通过HTTP post机制，将表单内各个字段和其内容放置在HTML HEADER内一起传到action属性所指的URL地址。<br>3、get传送的数据不能大于2kb，post传送的数据更大，但也有限制。<br>4、get安全性能非常低，post安全性较高<br>5、get限制Form表单的数据集的值必须为ASCII字符，而post支持整个ISO10646字符集。<br>AJAX的简单实现</p>
-<p>var xhr = new XMLHttpRequest()<br>xhr.onreadystatechange = function () {<br>        if (xhr.readyState == 4) {<br>                if ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr.status == 304)) {<br>                        alert(xhr.responseText)<br>                } else {<br>                        alert(‘unsuccessful:’ + xhr.status)<br>                }<br>        }<br>}<br>xhr.open(‘get’, ‘example.txt’, true)<br>xhr.send(null)<br>HTTP协议状态码</p>
-<p>具体内容看看MDN，这里就懒的写了 1xx: 信息 2xx: 成功 3xx：重定向 4xx：客户端错误 5xx：服务器错误<br>JavaScript如何得到HTTP的请求头信息和返回的信息</p>
-<p>getResponseHeader从响应信息中返回指定的http信息 getAllResonponseHeaders 获取响应的所有HTTP头信息<br>JSONP的简单实现</p>
-<p>var Jsonp = document.createElement(‘script’)<br>// Firfox: onload, IE: onreadyStatechange<br>Jsonp.onload = Jsonp.onreadyStatechange = function () {<br>    if (!this.readyState || this.readyState === ‘loaded’<br>        || this.readyState === ‘complete’) {<br>        alert($(‘#demo’).html())<br>        // 清理防止IE内存泄露<br>        Jsonp.onload = Jsonp.onreadyStatechange = null<br>    }<br>}<br>Jsonp.type = ‘text/javascript’<br>Jsonp.src = ‘<a href="http://www.xxx.com/JS/JQuery.js" target="_blank" rel="noopener">http://www.xxx.com/JS/JQuery.js</a>‘<br>// 往header里边添加<br>document.getElementByTagName(‘head’)[0].appendChild(Jsonp)<br>HTML5和CSS3的了解</p>
-<p>1、更多的描述性标签<br>2、良好的媒体支持<br>3、更强大的Web应用<br>4、跨文档信息通信<br>5、Web Sockets<br>6、客户端存储<br>7、更加精美的页面<br>8、更强大的表单<br>9、提升可访问性<br>10、先进的选择器<br>11、视觉效果<br>如何触发页面的reflow, repaint</p>
-<p>除了页面在首次加载时必然要经历该过程之外，还有以下行为会触发这个行为： １、dom元素的添加、修改、删除。(这就是为什么避免dom元素的修改，因为reflow和repaint最耗性能)<br>2、仅修改DOM元素的字体颜色（只有repaint,因为不需要调整布局）<br>3、应用新的样式或者修改任何影响元素外观的属性<br>4、resize浏览器窗口，滚动页面<br>5、读取元素的某些属性<br>localStorage对象的常用方法</p>
-<p>存储：localStorage.setItem(key, value) 获取：localStorage.getItem(key) 删除：localStorage.removeItem(key) 全部删除：localStorage.clear()<br>cookie、sessionStorage和localStorage的区别</p>
-<p>cookie数据始终在同源的HTTP请求中携带。而sessionStorage和localStorage不会自动把数据发送给服务器，仅在本地保存。cookie数据还有路径(path)的概念，可以限制cookie只属于某个路径下。<br>存储大小限制不同，cookie数据不能超过4KB,同时因为每次HTTP请求都会携带cookie,所以cookie只适合保存很小的数据。sessionStorage和localStorage也有存储限制，但是要大的多<br>数据有效期不同: sessionStorage:仅在当前浏览器窗口关闭前有效。localStorage:始终有效，窗口或浏览器关闭也一直保存。cookie:只要在设置的cookie过期时间之前一直有效 作用域不同：sessionStorage不在不同的浏览器窗口中共享(我们可以不可以通过使用sessionStorage实现跨域).localStorage在所有同源串口都是共享的。cookie在所有同源窗口都是共享的。<br>前端角度做好SEO</p>
-<p>1、CSS Sprites: 通俗来讲就是图片合并，可以把网站中一些比较通用的小图，合并到一张大图上<br>2、启用keep-alive属性：Keep-Alive可以理解为长连接。启用connection的Keep-Alive属性之外，这个连接能保持一段时间，从而提高页面加载的速度<br>3、启用浏览器缓存，可以用缓存技术来提高页面的加载速度<br>4、启用GZIP压缩<br>提高前端性能</p>
-<p>1、用Web Storage替换cookie<br>2、使用css动画代替JavaScript动画<br>3、使用客户端数据库<br>4、使用JavaScript的新功能<br>5、使用硬件加速<br>如果浏览器没有安装网页上所设置的文字，可以怎么做</p>
-<p>@font-face {font-family: name; src: url(url); sRules}<br>sRules样式表定义<br>谈谈对前端安全的理解，有什么，怎么防范</p>
-<p>前端安全问题主要有XSS、CSRF攻击<br>XSS：跨站脚本攻击<br>它允许用户将恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种javascript代码注入。<br>XSS的防御措施： 过滤转义输入输出<br>避免使用eval、new Function等执行字符串的方法，除非确定字符串和用户输入无关<br>使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的<br>使用innerHTML、document.write的时候，如果数据是用户输入的，那么需要对象关键字符进行过滤与转义<br>CSRF：跨站请求伪造<br>其实就是网站中的一些提交行为，被黑客利用，在你访问黑客的网站的时候进行操作，会被操作到其他网站上<br>CSRF防御措施：<br>检测http referer是否是同域名<br>避免登录的session长时间存储在客户端中<br>关键请求使用验证码或者token机制 其他的一些攻击方法还有HTTP劫持、界面操作劫持<br>实现继承的方法</p>
-<p>使用prototype的方法并不是很好，很容易出错，建议使用ES6的class。但这里不讲，因为有些老项目没用ES6，所以了解prototype还有有必要的 借用构造函数实现继承：<br>function Parent1(){<br>    this.name = “parent1”<br>}<br>function Child1(){<br>    Parent1.call(this);<br>    this.type = “child1”;<br>}<br>借用原型链实现继承：<br>function Parent2(){<br>    this.name = “parent2”;<br>    this.play = [1,2,3];<br>}<br>function Child2(){<br>    this.type = “child2”;<br>}<br>Child2.prototype = new Parent2();<br>组合式继承：<br>function Parent3(){<br>    this.name = “parent3”;<br>    this.play = [1,2,3];<br>}<br>function Child3(){<br>    Parent3.call(this);<br>    this.type = “child3”;<br>}<br>Child3.prototype = Object.create(Parent3.prototype);<br>Child3.prototype.constructor = Child3;<br>创建对象的方法(摘自《高级程序设计》)：</p>
-<p>工厂模式：<br>function cratePerson (name, age, job) {<br>    var o = new Object(<br>    o.name = name<br>    o.age = age<br>    o.job = job<br>    o.sayName = function () {<br>        alert(this.name)<br>    }<br>    return o<br>}</p>
-<p>var person1 = cratePerson(‘Greg’, 27, ‘Doctor’)<br>构造函数：<br>function Person (name, age, job) {<br>    this.name = name<br>    this.age = age<br>    this.job = job<br>    this.sayName = function () {<br>        alert(this.name )<br>    }<br>}</p>
-<p>var person1 = cratePerson(‘Greg’, 27, ‘Doctor’)<br>原型模式：<br>function Person () {<br>}</p>
-<p>Person.prototype.name = ‘Greg’<br>Person.prototype.age = 18<br>Person.prototype.job = ‘Doctor’<br>Person.prototype.sayName = function () {<br>    alert(this.name)<br>}<br>var person1 = new Person()<br>person1.sayName()   // Greg</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/first/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/hello-world/" class="archive-article-date">
-  	<time datetime="2018-01-16T05:57:00.640Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -509,9 +213,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
