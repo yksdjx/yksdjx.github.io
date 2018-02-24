@@ -151,7 +151,91 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="前端-node-express-websocket" class="article article-type-前端  article-index" itemscope itemprop="blogPost">
+    <article id="post-console" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/24/console/">console 知多少</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/24/console/" class="archive-article-date">
+  	<time datetime="2018-02-24T12:13:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="console"><a href="#console" class="headerlink" title="console"></a>console</h1><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><blockquote>
+<p>console.assert();<br>判断一个阐述是否为真，false的话 会抛出异常并且在控制台输出相应信息。</p>
+</blockquote>
+<p><img src="/img/console1.png" alt="console.assert"></p>
+<blockquote>
+<p>console.clear()<br>清空控制台</p>
+</blockquote>
+<p><img src="/img/console2.png" alt="console.clear"><br><img src="/img/console3.png" alt="console.clear"></p>
+<blockquote>
+<p>console.count([lable])<br>以参数为标识记录调用的次数，调用时在控制台打印标识以及调用次数。</p>
+</blockquote>
+<p><img src="/img/console4.png" alt="console.count"></p>
+<blockquote>
+<p>console.dir(object);<br>在控制台中显示指定JavaScript对象的属性，并通过类似文件树样式的交互列表显示。(非标准特性)</p>
+</blockquote>
+<p><img src="/img/console5.png" alt="console.dir"></p>
+<blockquote>
+<p>console.dirxml(object);<br>如果可以，打印 XML/HTML 元素表示的指定对象，或者 JavaScript 对象视图。</p>
+<p>console.error()<br>console.error(obj1 [, obj2, …, objN]);<br>console.error(msg [, subst1, …, substN]);<br>console.exception(obj1 [, obj2, …, objN]);<br>console.exception(msg [, subst1, …, substN]);<br>打印一条错误信息<br>注意: console.exception() 是 console.error() 的别名；它们功能相同 (非标准，浏览器不一定识别)</p>
+</blockquote>
+<p><img src="/img/console7.png" alt="console.error"></p>
+<p>未完待续…</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/24/console/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-node-express-websocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -173,11 +257,10 @@
       
         <p>===</p>
 <h3 id="Websocket-是什么？"><a href="#Websocket-是什么？" class="headerlink" title="Websocket 是什么？"></a>Websocket 是什么？</h3><p>–网络定义:<br><a href="https://zh.wikipedia.org/zh-cn/WebSocket" target="_blank" rel="noopener">WebSocket</a>是HTML5开始提供的一种浏览器与服务器间进行全双工通讯的网络技术。 WebSocket通信协议于2011年被IETF定为标准RFC 6455，WebSocketAPI被W3C定为标准。 在WebSocket API中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/img/websocket.png" alt="http-webSocket"></h2><h2 id="客户端🌰"><a href="#客户端🌰" class="headerlink" title="客户端🌰"></a>客户端🌰</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">"wss://echo.websocket.org"</span>);</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection open ..."</span>); </span><br><span class="line">  ws.send(<span class="string">"Hello WebSockets!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"Received Message: "</span> + evt.data);</span><br><span class="line">  <span class="comment">//ws.close();</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection closed."</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="进入正题-node-express-搭建-webSocket-服务"><a href="#进入正题-node-express-搭建-webSocket-服务" class="headerlink" title="进入正题 node express 搭建 webSocket 服务"></a>进入正题 node express 搭建 webSocket 服务</h2><p> 引用 express-ws;<br> npm install express-ws –save</p>
-<p> router/index.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">let</span> expressWs = <span class="built_in">require</span>(<span class="string">'express-ws'</span>)(express);</span><br><span class="line"><span class="keyword">let</span> router = express.Router();</span><br><span class="line"></span><br><span class="line">router.ws(<span class="string">'/xxxx/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ws, req</span>) </span>&#123;</span><br><span class="line">  ws.on(<span class="string">'message'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">    ws.send(<span class="string">'reply your message'</span>+msg);</span><br><span class="line">  &#125;);</span><br><span class="line">  ws.on(<span class="string">'close'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">evnt</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'closed'</span>)</span><br><span class="line">  &#125;);</span><br><span class="line">  ws.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">evnt</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(evnt)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/img/websocket.png" alt="http-webSocket"></h2><h2 id="node-express-搭建-webSocket-服务"><a href="#node-express-搭建-webSocket-服务" class="headerlink" title="node express 搭建 webSocket 服务"></a>node express 搭建 webSocket 服务</h2><p> 引用 express-ws;<br> npm install express-ws –save</p>
+<p>Full example</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> expressWs = <span class="built_in">require</span>(<span class="string">'express-ws'</span>)(app);</span><br><span class="line"> </span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'middleware'</span>);</span><br><span class="line">  req.testing = <span class="string">'testing'</span>;</span><br><span class="line">  <span class="keyword">return</span> next();</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'get route'</span>, req.testing);</span><br><span class="line">  res.end();</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">app.ws(<span class="string">'/websocket_echo.do'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ws, req</span>) </span>&#123;</span><br><span class="line">  ws.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(msg);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'socket'</span>, req.testing);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="客户端🌰"><a href="#客户端🌰" class="headerlink" title="客户端🌰"></a>客户端🌰</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">"wss://lcoalhost:3000/websocket_echo.do"</span>);</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection open ..."</span>); </span><br><span class="line">  ws.send(<span class="string">"Hello WebSockets!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"Received Message: "</span> + evt.data);</span><br><span class="line">  <span class="comment">//ws.close();</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection closed."</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -219,7 +302,7 @@
 
 
   
-    <article id="前端-browsers-work" class="article article-type-前端  article-index" itemscope itemprop="blogPost">
+    <article id="post-browsers-work" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -333,7 +416,7 @@
 
 
   
-    <article id="前端-first" class="article article-type-前端  article-index" itemscope itemprop="blogPost">
+    <article id="post-first" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
