@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://yksdjx.github.io/2018/01/16/first/index.html">
 <meta property="og:site_name" content="...">
 <meta property="og:description" content="如何处理IE和Firefox如果处理事件兼容性 获取事件function et(e) {    let event = window.event || e}键盘值的获取： Firfox下event.which和IE的event.keyCode相当let key = event.keyCode || event.which事件源的获取：let target = event.srcElement ||">
-<meta property="og:updated_time" content="2018-02-09T10:29:44.269Z">
+<meta property="og:updated_time" content="2018-03-01T02:39:03.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="first">
 <meta name="twitter:description" content="如何处理IE和Firefox如果处理事件兼容性 获取事件function et(e) {    let event = window.event || e}键盘值的获取： Firfox下event.which和IE的event.keyCode相当let key = event.keyCode || event.which事件源的获取：let target = event.srcElement ||">
@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/user.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">yksdjx</a></h1>
@@ -104,7 +104,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/user.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">yksdjx</h1>
@@ -174,7 +174,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>如何处理IE和Firefox如果处理事件兼容性</p>
-<p>获取事件<br>function et(e) {<br>    let event = window.event || e<br>}<br>键盘值的获取： Firfox下event.which和IE的event.keyCode相当<br>let key = event.keyCode || event.which<br>事件源的获取：<br>let target = event.srcElement || event.target<br>事件监听:<br>IE: element.attacthEvent(‘on’ + eventName, function(){})<br>Firfox: element.addEventListener(eventName, handler, false)<br>鼠标位置： 在IE下，event对象有x、y属性，在Firfox下，event有PageX, PageY属性 所有获取鼠标位置时：<br>x = event.x || event.pageX<br>阻止默认浏览器行为：<br>e.preventDefault() || event.returnValue = false<br>阻止冒泡事件：<br>e.stopPropagation() || event.cancelBubble = true<br>获取下拉框中选中项的内容</p>
+<p>获取事件<br>function et(e) {<br>    let event = window.event || e<br>}<br>键盘值的获取： Firfox下event.which和IE的event.keyCode相当<br>let key = event.keyCode || event.which<br>事件源的获取：<br>let target = event.srcElement || event.target<br>事件监听:<br>IE: element.attacthEvent(‘on’ + eventName, function(){})<br>Firfox: element.addEventListener(eventName, handler, false)<br>鼠标位置： 在IE下，event对象有x、y属性，在Firfox下，event有PageX, PageY属性 所有获取鼠标位置时：<br>x = event.x || event.pageX<br>阻止默认浏览器行为：<br>e.preventDefault() || event.returnValue = false<br>阻止冒泡事件：<br>e.stopPropagation() || event.cancelBubble = true<br>获取下拉框中选中项的内容<br><a id="more"></a></p>
 <p><select id="test" name=""><br>    <option value="1">text 1</option><br>    <option value="2">text 2</option><br></select><br>拿到选中项的索引：<br>let index = document.getElementById(‘test’).selectIndex.<br>selectIndex表示选中项的index<br>在Form表单中get和post方式提交的区别</p>
 <p>这个问题一直在争论，我就觉得明明一句话解决的问题，非要弄得这么复杂。这是书上的答案：<br>1、get是从服务器上获取数据，post是向服务器提交数据<br>2、get是把参数数据提交到表单的action属性所指的URL中，值和表单各个字段一一对应。post是通过HTTP post机制，将表单内各个字段和其内容放置在HTML HEADER内一起传到action属性所指的URL地址。<br>3、get传送的数据不能大于2kb，post传送的数据更大，但也有限制。<br>4、get安全性能非常低，post安全性较高<br>5、get限制Form表单的数据集的值必须为ASCII字符，而post支持整个ISO10646字符集。<br>AJAX的简单实现</p>
 <p>var xhr = new XMLHttpRequest()<br>xhr.onreadystatechange = function () {<br>        if (xhr.readyState == 4) {<br>                if ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr.status == 304)) {<br>                        alert(xhr.responseText)<br>                } else {<br>                        alert(‘unsuccessful:’ + xhr.status)<br>                }<br>        }<br>}<br>xhr.open(‘get’, ‘example.txt’, true)<br>xhr.send(null)<br>HTTP协议状态码</p>
@@ -432,6 +432,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

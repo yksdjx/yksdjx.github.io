@@ -14,16 +14,10 @@
 <meta property="og:url" content="https://yksdjx.github.io/2018/01/23/browsers-work/index.html">
 <meta property="og:site_name" content="...">
 <meta property="og:description" content="为什么要了解浏览器加载、解析、渲染这个过程？ 好，我们先说一下，为什么要了解这些呢？如果想写出一个最佳实践的页面，就要好好了解。 了解浏览器如何进行加载，可以在引用外部样式文件，外部js时，将他们放到合适的位置，使浏览器以最快的速度将文件加载完毕。了解浏览器如何进行解析，可以在构建DOM结构，组织css选择器时，选择最优的写法，提高浏览器的解析速率。了解浏览器如何进行渲染，明白渲染的过程，在设置元">
-<meta property="og:image" content="http://img.blog.csdn.net/20160724092250385">
-<meta property="og:image" content="http://img.blog.csdn.net/20160724103859664">
-<meta property="og:image" content="http://img.blog.csdn.net/20160724160506056">
-<meta property="og:image" content="http://img.blog.csdn.net/20160724160558713">
-<meta property="og:image" content="http://img.blog.csdn.net/20160724160946952">
-<meta property="og:updated_time" content="2018-02-09T10:29:36.071Z">
+<meta property="og:updated_time" content="2018-03-09T09:08:25.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="browsers_work">
 <meta name="twitter:description" content="为什么要了解浏览器加载、解析、渲染这个过程？ 好，我们先说一下，为什么要了解这些呢？如果想写出一个最佳实践的页面，就要好好了解。 了解浏览器如何进行加载，可以在引用外部样式文件，外部js时，将他们放到合适的位置，使浏览器以最快的速度将文件加载完毕。了解浏览器如何进行解析，可以在构建DOM结构，组织css选择器时，选择最优的写法，提高浏览器的解析速率。了解浏览器如何进行渲染，明白渲染的过程，在设置元">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20160724092250385">
   
     <link rel="alternative" href="/atom.xml" title="..." type="application/atom+xml">
   
@@ -52,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/user.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">yksdjx</a></h1>
@@ -110,7 +104,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/user.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">yksdjx</h1>
@@ -181,12 +175,12 @@
       
         <p>为什么要了解浏览器加载、解析、渲染这个过程？</p>
 <p>好，我们先说一下，为什么要了解这些呢？如果想写出一个最佳实践的页面，就要好好了解。</p>
-<p>了解浏览器如何进行加载，可以在引用外部样式文件，外部js时，将他们放到合适的位置，使浏览器以最快的速度将文件加载完毕。<br>了解浏览器如何进行解析，可以在构建DOM结构，组织css选择器时，选择最优的写法，提高浏览器的解析速率。<br>了解浏览器如何进行渲染，明白渲染的过程，在设置元素属性，编写js文件时，可以减少”reflow“”repaint“的消耗。<br>正文开始</p>
+<p>了解浏览器如何进行加载，可以在引用外部样式文件，外部js时，将他们放到合适的位置，使浏览器以最快的速度将文件加载完毕。<br>了解浏览器如何进行解析，可以在构建DOM结构，组织css选择器时，选择最优的写法，提高浏览器的解析速率。<br>了解浏览器如何进行渲染，明白渲染的过程，在设置元素属性，编写js文件时，可以减少”reflow“”repaint“的消耗。<br><a id="more"></a><br>正文开始</p>
 <p>一、浏览器的主要功能</p>
 <p>　　浏览器的主要功能是将用户选择的web资源呈现出来，它需要从服务器请求资源，并将其显示在浏览器窗口中，资源的格式通常是HTML，也包括PDF、image及其他格式。用户用URI（Uniform Resource Identifier统一资源标识符）来指定所请求资源的位置，通过DNS查询，将网址转换为IP地址。整个浏览器工作的流程，之前博客中有论述：<br>　　1、输入网址。<br>　　2、浏览器查找域名的IP地址。<br>　　3. 浏览器给web服务器发送一个HTTP请求<br>　　4. 网站服务的永久重定向响应<br>　　5. 浏览器跟踪重定向地址 现在，浏览器知道了要访问的正确地址，所以它会发送另一个获取请求。<br>　　6. 服务器“处理”请求，服务器接收到获取请求，然后处理并返回一个响应。<br>　　7. 服务器发回一个HTML响应<br>　　8. 浏览器开始显示HTML<br>　　9. 浏览器发送请求，以获取嵌入在HTML中的对象。在浏览器显示HTML时，它会注意到需要获取其他地址内容的标签。这时，浏览器会发送一个获取请求来重新获得这些文件。这些文件就包括CSS/JS/图片等资源，这些资源的地址都要经历一个和HTML读取类似的过程。所以浏览器会在DNS中查找这些域名，发送请求，重定向等等…</p>
 <p>那么，一个页面，究竟是如何从我们输入一个网址到最后完整的呈现在我们面前的呢？还需要了解一下浏览器是如何渲染的：</p>
 <p>二、浏览器的渲染</p>
-<p>下面是渲染引擎在取得内容之后的基本流程：<br> <img src="http://img.blog.csdn.net/20160724092250385" alt="Alt text"><br>　解析html以构建dom树 -&gt; 构建render树 -&gt; 布局render树 -&gt; 绘制render树<br>先来看个图：</p>
+<p>下面是渲染引擎在取得内容之后的基本流程：<br> <!-- ![Alt text](http://img.blog.csdn.net/20160724092250385)    --><br>　解析html以构建dom树 -&gt; 构建render树 -&gt; 布局render树 -&gt; 绘制render树<br>先来看个图：</p>
 <p>这里写图片描述</p>
 <p>所以，浏览器会解析三个东西：<br>（1） HTML/SVG/XHTML，解析这三种文件会产生一个 DOM Tree。<br>（2） CSS，解析 CSS 会产生 CSS 规则树。<br>（3） Javascript脚本，主要是通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 CSS Rule Tree.</p>
 <p>我今天又纠结了一上午，到底是怎么解析怎么渲染的，我的疑问在于，浏览器到底是先解析生成了DOM树，然后再加载CSS JS文件进行渲染，还是在生成DOM的过程中，遇到了 link script 然后就加载CSS JS，边加载边渲染。我有这种疑问的原因在于，看网上的帖子，说的根本不一样好嘛！ 比如这篇 我想说，这个写的让我直接懵逼，真的是直接懵逼啊，学习的过程中，总会遇到困难，但这次，让我真的好难啊。不过正因为不懂才继续查资料继续学习嘛 ==！我又查了一上午，自己测试测试测试，然后觉着，我好像是明白点了。真的推荐大家去认真看《how browsers work》这篇文章，学习不懂得知识的时候，还是要从比较权威的资料看起比较好，也不要像我今天这样，无头苍蝇乱查。</p>
@@ -195,7 +189,8 @@
 <ol>
 <li>浏览器会将HTML解析成一个DOM树，DOM 树的构建过程是一个深度遍历过程：当前节点的所有子节点都构建好后才会去构建当前节点的下一个兄弟节点。 </li>
 <li>将CSS解析成 CSS Rule Tree 。 </li>
-<li>根据DOM树和CSSOM来构造 Rendering Tree。注意：Rendering Tree 渲染树并不等同于 DOM 树，因为一些像 Header 或 display:none 的东西就没必要放在渲染树中了。<br>这里写图片描述<br><img src="http://img.blog.csdn.net/20160724103859664" alt="Alt text"><br>4.有了Render Tree，浏览器已经能知道网页中有哪些节点、各个节点的CSS定义以及他们的从属关系。下一步操作称之为Layout，顾名思义就是计算出每个节点在屏幕中的位置。<br>5.再下一步就是绘制，即遍历render树，并使用UI后端层绘制每个节点。<br>重点来了：</li>
+<li>根据DOM树和CSSOM来构造 Rendering Tree。注意：Rendering Tree 渲染树并不等同于 DOM 树，因为一些像 Header 或 display:none 的东西就没必要放在渲染树中了。<br>这里写图片描述<!-- ![Alt text](http://img.blog.csdn.net/20160724103859664) -->
+4.有了Render Tree，浏览器已经能知道网页中有哪些节点、各个节点的CSS定义以及他们的从属关系。下一步操作称之为Layout，顾名思义就是计算出每个节点在屏幕中的位置。<br>5.再下一步就是绘制，即遍历render树，并使用UI后端层绘制每个节点。<br>重点来了：</li>
 </ol>
 <p>　　上述这个过程是逐步完成的，为了更好的用户体验，渲染引擎将会尽可能早的将内容呈现到屏幕上，并不会等到所有的html都解析完成之后再去构建和布局render树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。（这段话是《how browsers work》里面讲的，让我茅塞顿开）</p>
 <p>几个概念：<br>（1）Reflow（回流）：浏览器要花时间去渲染，当它发现了某个部分发生了变化影响了布局，那就需要倒回去重新渲染。<br>（2）Repaint（重绘）：如果只是改变了某个元素的背景颜色，文字颜色等，不影响元素周围或内部布局的属性，将只会引起浏览器的repaint，重画某一部分。<br>Reflow要比Repaint更花费时间，也就更影响性能。所以在写代码的时候，要尽量避免过多的Reflow。</p>
@@ -223,10 +218,10 @@
 <p>dom深度尽量浅。<br>减少inline javascript、css的数量。<br>使用现代合法的css属性。<br>不要为id选择器指定类名或是标签，因为id可以唯一确定一个元素。<br>避免后代选择符，尽量使用子选择符。原因：子元素匹配符的概率要大于后代元素匹配符。后代选择符;#tp p{} 子选择符：#tp&gt;p{}<br>避免使用通配符，举一个例子，.mod .hd *{font-size:14px;} 根据匹配顺序,将首先匹配通配符,也就是说先匹配出通配符,然后匹配.hd（就是要对dom树上的所有节点进行遍历他的父级元素）,然后匹配.mod,这样的性能耗费可想而知.<br>关于script标签的位置</p>
 <p>现在，我们大都会将script标签放在body结束标签之前，那原因是什么呢？我今天也做了一个测试。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>测试js代码位置<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var item = document.getElementById("item");</span></span><br><span class="line"><span class="undefined">        cosole.log(item);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"item"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span></span><br><span class="line">        你好</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>上述代码中有一段js代码，要在控制台打印一个元素，我把script标签放在head里，控制台里打印出来的是null。<br>这里写图片描述<br><img src="http://img.blog.csdn.net/20160724160506056" alt="alt text"><br>我又把js代码放在body结束标签之前，打印出来的就是div元素了<br><img src="http://img.blog.csdn.net/20160724160558713" alt="alt text"></p>
+<p>上述代码中有一段js代码，要在控制台打印一个元素，我把script标签放在head里，控制台里打印出来的是null。<br>这里写图片描述<br><!-- ![alt text](http://img.blog.csdn.net/20160724160506056) --><br>我又把js代码放在body结束标签之前，打印出来的就是div元素了<br><!-- ![alt text](http://img.blog.csdn.net/20160724160558713) --></p>
 <p>所以，通过这个简单的例子我们可以看到，js代码在加载完后，是立即执行的。<br>我又做了一个测试，在js代码里面写了一个死循环，把它放在head标签中，</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>测试js代码位置<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var item = document.getElementById("item");</span></span><br><span class="line"><span class="undefined">        while(true)&#123;</span></span><br><span class="line"><span class="undefined">            console.log(1);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"item"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span></span><br><span class="line">        你好</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>页面是这样的：<br><img src="http://img.blog.csdn.net/20160724160946952" alt="alt text"></p>
+<p>页面是这样的：<br><!-- ![alt text](http://img.blog.csdn.net/20160724160946952) --></p>
 <p>一直在执行那个打印1的死循环，后面的body都没有加载渲染出来。所以，这个小例子，我们可以看出，js的下载和执行会阻塞Dom树的构建。</p>
 <p>所以，Javascript的加载和执行的特点：<br>（1）载入后马上执行；<br>（2）执行时会阻塞页面后续的内容（包括页面的渲染、其它资源的下载）。原因：因为浏览器需要一个稳定的DOM树结构，而JS中很有可能有 代码直接改变了DOM树结构，比如使用 document.write 或 appendChild,甚至是直接使用的location.href进行跳转，浏览器为了防止出现JS修 改DOM树，需要重新构建DOM树的情况，所以 就会阻塞其他的下载和呈现。</p>
 <p>减少 JavaScript 对性能的影响的方法：</p>
@@ -469,6 +464,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

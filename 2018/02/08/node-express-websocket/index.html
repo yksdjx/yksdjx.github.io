@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="...">
 <meta property="og:description" content="=== Websocket 是什么？–网络定义:WebSocket是HTML5开始提供的一种浏览器与服务器间进行全双工通讯的网络技术。 WebSocket通信协议于2011年被IETF定为标准RFC 6455，WebSocketAPI被W3C定为标准。 在WebSocket API中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传">
 <meta property="og:image" content="https://yksdjx.github.io/img/websocket.png">
-<meta property="og:updated_time" content="2018-02-09T13:02:25.776Z">
+<meta property="og:updated_time" content="2018-03-01T02:39:16.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node express websocket">
 <meta name="twitter:description" content="=== Websocket 是什么？–网络定义:WebSocket是HTML5开始提供的一种浏览器与服务器间进行全双工通讯的网络技术。 WebSocket通信协议于2011年被IETF定为标准RFC 6455，WebSocketAPI被W3C定为标准。 在WebSocket API中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传">
@@ -48,7 +48,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/user.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">yksdjx</a></h1>
@@ -106,7 +106,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/user.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">yksdjx</h1>
@@ -177,7 +177,8 @@
       
         <p>===</p>
 <h3 id="Websocket-是什么？"><a href="#Websocket-是什么？" class="headerlink" title="Websocket 是什么？"></a>Websocket 是什么？</h3><p>–网络定义:<br><a href="https://zh.wikipedia.org/zh-cn/WebSocket" target="_blank" rel="noopener">WebSocket</a>是HTML5开始提供的一种浏览器与服务器间进行全双工通讯的网络技术。 WebSocket通信协议于2011年被IETF定为标准RFC 6455，WebSocketAPI被W3C定为标准。 在WebSocket API中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/img/websocket.png" alt="http-webSocket"></h2><h2 id="node-express-搭建-webSocket-服务"><a href="#node-express-搭建-webSocket-服务" class="headerlink" title="node express 搭建 webSocket 服务"></a>node express 搭建 webSocket 服务</h2><p> 引用 express-ws;<br> npm install express-ws –save</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/img/websocket.png" alt="http-webSocket"></h2><a id="more"></a>
+<h2 id="node-express-搭建-webSocket-服务"><a href="#node-express-搭建-webSocket-服务" class="headerlink" title="node express 搭建 webSocket 服务"></a>node express 搭建 webSocket 服务</h2><p> 引用 express-ws;<br> npm install express-ws –save</p>
 <p>Full example</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> expressWs = <span class="built_in">require</span>(<span class="string">'express-ws'</span>)(app);</span><br><span class="line"> </span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'middleware'</span>);</span><br><span class="line">  req.testing = <span class="string">'testing'</span>;</span><br><span class="line">  <span class="keyword">return</span> next();</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'get route'</span>, req.testing);</span><br><span class="line">  res.end();</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">app.ws(<span class="string">'/websocket_echo.do'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ws, req</span>) </span>&#123;</span><br><span class="line">  ws.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(msg);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'socket'</span>, req.testing);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="客户端🌰"><a href="#客户端🌰" class="headerlink" title="客户端🌰"></a>客户端🌰</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">"wss://lcoalhost:3000/websocket_echo.do"</span>);</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection open ..."</span>); </span><br><span class="line">  ws.send(<span class="string">"Hello WebSockets!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"Received Message: "</span> + evt.data);</span><br><span class="line">  <span class="comment">//ws.close();</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Connection closed."</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -418,6 +419,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
