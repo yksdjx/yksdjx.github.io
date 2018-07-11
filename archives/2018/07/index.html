@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yksdjx.github.io">
-  <title>...</title>
+  <title>Archives: 2018/7 | ...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="...">
-<meta property="og:url" content="https://yksdjx.github.io/index.html">
+<meta property="og:url" content="https://yksdjx.github.io/archives/2018/07/index.html">
 <meta property="og:site_name" content="...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="...">
@@ -151,40 +151,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Es6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/10/Es6/">ES6</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/10/Es6/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/10/Es6/" class="archive-article-date">
   	<time datetime="2018-07-10T11:28:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-10</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h2 id="object-js"><a href="#object-js" class="headerlink" title="object.js()"></a>object.js()</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">0</span> == <span class="number">-0</span>  <span class="comment">//true</span></span><br><span class="line">+<span class="number">0</span> === <span class="number">-0</span> <span class="comment">//true</span></span><br><span class="line"><span class="built_in">Object</span>.is(+<span class="number">0</span>,<span class="number">-0</span>)</span><br><span class="line"></span><br><span class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span> <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>,<span class="literal">NaN</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Obect-assign-用于将所有课枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。"><a href="#Obect-assign-用于将所有课枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。" class="headerlink" title="Obect.assign()  用于将所有课枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。"></a>Obect.assign()  用于将所有课枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object1 = &#123;</span><br><span class="line">    fruit:<span class="string">'🍎'</span>,</span><br><span class="line">    drink: <span class="string">'🍺'</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> object2 = <span class="built_in">Object</span>.assign(&#123;<span class="attr">drink</span>:<span class="string">'🥛'</span>,<span class="attr">breakfast</span>:<span class="string">'🍪'</span>&#125;,object1);</span><br><span class="line"><span class="built_in">console</span>.log(object2);</span><br><span class="line"><span class="comment">/* &gt; Object &#123; drink: "🍺", breakfast: "🍪", fruit: "🍎" &#125; */</span></span><br></pre></td></tr></table></figure>
-<h3 id="Obect-setPrototypeOf"><a href="#Obect-setPrototypeOf" class="headerlink" title="Obect.setPrototypeOf"></a>Obect.setPrototypeOf</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> breakfast = &#123;</span><br><span class="line">    getDrink()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍵'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dinner = &#123;</span><br><span class="line">    getDrink() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍺'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> sunday = <span class="built_in">Object</span>.create(breakfast);</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()); <span class="comment">//🍵</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(sunday) === breakfast); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(sunday,dinner);</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()) <span class="comment">// 🍺</span></span><br></pre></td></tr></table></figure>
-<h3 id="object-protp"><a href="#object-protp" class="headerlink" title="object.__protp__"></a>object.__protp__</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> breakfast = &#123;</span><br><span class="line">    getDrink()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍵'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dinner = &#123;</span><br><span class="line">    getDrink() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍺'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> sunday = &#123;</span><br><span class="line">    __proto__: breakfast</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()); <span class="comment">//🍵</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(sunday) === breakfast); <span class="comment">// true</span></span><br><span class="line">sunday.__proto__ = dinner;</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()) <span class="comment">// 🍺</span></span><br></pre></td></tr></table></figure>
-<h3 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> breakfast = &#123;</span><br><span class="line">    getDrink()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍵'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dinner = &#123;</span><br><span class="line">    getDrink() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍺'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> sunday = &#123;</span><br><span class="line">    __proto__: breakfast,</span><br><span class="line">    getDrink() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.getDrink()+<span class="string">'🥛'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()); <span class="comment">//🍵🥛</span></span><br></pre></td></tr></table></figure>
-<h3 id="Iterators-迭代器"><a href="#Iterators-迭代器" class="headerlink" title="Iterators 迭代器"></a>Iterators 迭代器</h3><p>每次执行会返回 {value:’xxxx’,done:true/false}<br>自定义 迭代器<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chef</span>(<span class="params">foods</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        next()&#123;</span><br><span class="line">            <span class="keyword">let</span> done = (i &gt;= foods.length);</span><br><span class="line">            <span class="keyword">let</span> value = !done ? foods[i++] : <span class="literal">undefined</span>;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                value:value,</span><br><span class="line">                done:done</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> Nicholas = chef([<span class="string">'🍅'</span>,<span class="string">'🍳'</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: "🍅", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: "🍳", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">chef</span>(<span class="params">foods</span>) </span>&#123; <span class="comment">//生成器</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;foods.length;i++)&#123;</span><br><span class="line">       <span class="keyword">yield</span> foods[i]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> Nicholas = chef([<span class="string">'🍅'</span>,<span class="string">'🍳'</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: "🍅", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: "🍳", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
-      
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/10/Es6/">ES6</a>
+    </h1>
+  
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,615 +190,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/10/Es6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-array" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/25/array/">Array 去重</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/25/array/" class="archive-article-date">
-  	<time datetime="2018-04-25T02:45:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="方法一：双层循环"><a href="#方法一：双层循环" class="headerlink" title="方法一：双层循环"></a>方法一：双层循环</h2><p>使用 indexOf 来循环判断一遍，但在这个方法之前，让我们先看看最原始的方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// temp用来存储结果</span></span><br><span class="line">    <span class="keyword">var</span> temp = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, arrayLen = array.length; i &lt; arrayLen; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, tempLen = temp.length; j &lt; tempLen; j++ ) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] === temp[j]) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果array[i]是唯一的，那么执行完循环，j等于tempLen</span></span><br><span class="line">        <span class="keyword">if</span> (j === tempLen) &#123;</span><br><span class="line">            temp.push(array[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(array)); <span class="comment">// [1, "1"]</span></span><br></pre></td></tr></table></figure></p>
-<p>此方法中，使用了循环嵌套，外层循环array；里面循环temp,如果array[i]的值和temp[j]的值相等，就跳出循环。如果都不等于，说明元素是唯一的，这时候j的值就会等于temp的长度，根据这个特点进行判断，将值添加进temp. 通用性好，当是效率不高<br>
-        
-          <a class="article-more-a" href="/2018/04/25/array/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/25/array/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-animation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/animation/">requestAnimationFrame</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/08/animation/" class="archive-article-date">
-  	<time datetime="2018-03-08T05:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="window-requestAnimationFrame"><a href="#window-requestAnimationFrame" class="headerlink" title="window.requestAnimationFrame"></a>window.requestAnimationFrame</h1><h4 id="告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用"><a href="#告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用" class="headerlink" title="告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用"></a>告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用</h4><blockquote>
-<p>*注意：若您想要在下次重绘时产生另一个动画画面，您的回调例程必须调用 requestAnimationFrame()。</p>
-</blockquote>
-<p>当你准备好更新屏幕画面时你就应该调用此方法。这会要求你的动画函数在浏览器下次重绘前执行。回调的次数常是每秒60次，但大多数浏览器通常匹配W3C所建议的刷新率。运行在后台标签页或者隐藏的 iframe里时， requestAnimationFrame()暂停调用以提升性能和电池寿命。</p>
-<p>回调函数会被传入一个参数，DOMHighResTimeStamp，提示当前被requestAnimationFrame()排序的回调函数被触发的时间。即使每个回调函数的工作量的计算都花了时间，单个帧中的多个回调也都将被传入相同的时间戳。该时间戳是一个十进制数，单位毫秒，最小精度为1ms(µs).<br>
-        
-          <a class="article-more-a" href="/2018/03/08/animation/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/08/animation/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-prototype" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/28/prototype/">继承和原型链</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/28/prototype/" class="archive-article-date">
-  	<time datetime="2018-02-28T02:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基于原型链的继承"><a href="#基于原型链的继承" class="headerlink" title="基于原型链的继承"></a>基于原型链的继承</h1><h2 id="继承属性"><a href="#继承属性" class="headerlink" title="继承属性"></a>继承属性</h2><p>万物皆对象，JavaScript 对象有一个指向一个原型对象的链。当试图方位一个对象属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或达到原型链的末尾。<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">Javascript继承机制的设计思想(见阮老师文章)</a> </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/28/prototype/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-console" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/24/console/">console 知多少</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/24/console/" class="archive-article-date">
-  	<time datetime="2018-02-24T12:13:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="console"><a href="#console" class="headerlink" title="console"></a>console</h1><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><blockquote>
-<p>console.assert();<br>判断一个阐述是否为真，false的话 会抛出异常并且在控制台输出相应信息。</p>
-</blockquote>
-<p><img src="/img/console1.png" alt="console.assert"></p>
-<blockquote>
-<p>console.clear()<br>清空控制台</p>
-</blockquote>
-<p><img src="/img/console2.png" alt="console.clear"><br><img src="/img/console3.png" alt="console.clear"><br>
-        
-          <a class="article-more-a" href="/2018/02/24/console/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/24/console/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-node-express-websocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/08/node-express-websocket/">node express websocket</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/08/node-express-websocket/" class="archive-article-date">
-  	<time datetime="2018-02-08T10:53:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>===</p>
-<h3 id="Websocket-是什么？"><a href="#Websocket-是什么？" class="headerlink" title="Websocket 是什么？"></a>Websocket 是什么？</h3><p>–网络定义:<br><a href="https://zh.wikipedia.org/zh-cn/WebSocket" target="_blank" rel="noopener">WebSocket</a>是HTML5开始提供的一种浏览器与服务器间进行全双工通讯的网络技术。 WebSocket通信协议于2011年被IETF定为标准RFC 6455，WebSocketAPI被W3C定为标准。 在WebSocket API中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/img/websocket.png" alt="http-webSocket"></h2>
-        
-          <a class="article-more-a" href="/2018/02/08/node-express-websocket/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/08/node-express-websocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-browsers-work" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/23/browsers-work/">browsers_work</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/23/browsers-work/" class="archive-article-date">
-  	<time datetime="2018-01-23T12:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为什么要了解浏览器加载、解析、渲染这个过程？</p>
-<p>好，我们先说一下，为什么要了解这些呢？如果想写出一个最佳实践的页面，就要好好了解。</p>
-<p>了解浏览器如何进行加载，可以在引用外部样式文件，外部js时，将他们放到合适的位置，使浏览器以最快的速度将文件加载完毕。<br>了解浏览器如何进行解析，可以在构建DOM结构，组织css选择器时，选择最优的写法，提高浏览器的解析速率。<br>了解浏览器如何进行渲染，明白渲染的过程，在设置元素属性，编写js文件时，可以减少”reflow“”repaint“的消耗。<br>
-        
-          <a class="article-more-a" href="/2018/01/23/browsers-work/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/23/browsers-work/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-first" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/first/">first</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/first/" class="archive-article-date">
-  	<time datetime="2018-01-16T08:03:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如何处理IE和Firefox如果处理事件兼容性</p>
-<p>获取事件<br>function et(e) {<br>    let event = window.event || e<br>}<br>键盘值的获取： Firfox下event.which和IE的event.keyCode相当<br>let key = event.keyCode || event.which<br>事件源的获取：<br>let target = event.srcElement || event.target<br>事件监听:<br>IE: element.attacthEvent(‘on’ + eventName, function(){})<br>Firfox: element.addEventListener(eventName, handler, false)<br>鼠标位置： 在IE下，event对象有x、y属性，在Firfox下，event有PageX, PageY属性 所有获取鼠标位置时：<br>x = event.x || event.pageX<br>阻止默认浏览器行为：<br>e.preventDefault() || event.returnValue = false<br>阻止冒泡事件：<br>e.stopPropagation() || event.cancelBubble = true<br>获取下拉框中选中项的内容<br>
-        
-          <a class="article-more-a" href="/2018/01/16/first/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/first/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/hello-world/" class="archive-article-date">
-  	<time datetime="2018-01-16T05:57:00.640Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -826,9 +224,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

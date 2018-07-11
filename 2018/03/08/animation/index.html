@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://yksdjx.github.io/2018/03/08/animation/index.html">
 <meta property="og:site_name" content="...">
 <meta property="og:description" content="window.requestAnimationFrame告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用 *注意：若您想要在下次重绘时产生另一个动画画面，您的回调例程必须调用 requestAnimationFrame()。  当你准备好更新屏幕画面时你就应该调用此方法。这会要求你的动画函数在浏览器下次">
-<meta property="og:updated_time" content="2018-03-08T09:01:49.060Z">
+<meta property="og:updated_time" content="2018-07-10T11:28:44.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="requestAnimationFrame">
 <meta name="twitter:description" content="window.requestAnimationFrame告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用 *注意：若您想要在下次重绘时产生另一个动画画面，您的回调例程必须调用 requestAnimationFrame()。  当你准备好更新屏幕画面时你就应该调用此方法。这会要求你的动画函数在浏览器下次">
@@ -179,7 +179,14 @@
 </blockquote>
 <p>当你准备好更新屏幕画面时你就应该调用此方法。这会要求你的动画函数在浏览器下次重绘前执行。回调的次数常是每秒60次，但大多数浏览器通常匹配W3C所建议的刷新率。运行在后台标签页或者隐藏的 iframe里时， requestAnimationFrame()暂停调用以提升性能和电池寿命。</p>
 <p>回调函数会被传入一个参数，DOMHighResTimeStamp，提示当前被requestAnimationFrame()排序的回调函数被触发的时间。即使每个回调函数的工作量的计算都花了时间，单个帧中的多个回调也都将被传入相同的时间戳。该时间戳是一个十进制数，单位毫秒，最小精度为1ms(µs).<br><a id="more"></a></p>
-
+<p>##用法</p>
+<blockquote>
+<p>window.requestAnimationFrame(callback)</p>
+</blockquote>
+<p><strong>参数</strong><br><em>callback</em><br>一个指定函数的参数，该函数在下次重新绘制动画时调用。这个回调函数只有一个传参， DOMHighResTimeStamp, 指示 requestAnimationFrame()开始触发回调函数的当前时间（performance.now()返回的时间）。</p>
+<p><strong>返回值</strong><br>一个long整数，请求ID，是回调列表中唯一的标识。是个非零值，没别的意义。你可以传这个值给 window.cancelAnimationFrame()以取消回调函数。</p>
+<p><strong>🌰</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> start = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">'SomeElementYouWantToAnimate'</span>);</span><br><span class="line">elment.style.postion = <span class="string">"absolute"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params">timestamp</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!start)&#123;</span><br><span class="line">        start = timestamp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> progress = timestamp -start;</span><br><span class="line">    element.style/left = <span class="built_in">Math</span>.min(progress/<span class="number">10</span>,<span class="number">200</span>)+<span class="string">'px'</span>;</span><br><span class="line">    <span class="keyword">if</span>(progress&lt;<span class="number">2000</span>)&#123;</span><br><span class="line">        <span class="built_in">window</span>.requestAnimationFrame(step);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.requestAnimationFrame(step);</span><br></pre></td></tr></table></figure>
       
 
       
@@ -292,6 +299,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/04/25/array/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Array 去重
+        
+      </div>
+    </a>
   
   
     <a href="/2018/02/28/prototype/" id="article-nav-older" class="article-nav-link-wrap">

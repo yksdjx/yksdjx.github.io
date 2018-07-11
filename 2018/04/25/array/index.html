@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yksdjx.github.io">
-  <title>...</title>
+  <title>Array 去重 | ...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="...">
-<meta property="og:url" content="https://yksdjx.github.io/index.html">
+  <meta name="description" content="方法一：双层循环使用 indexOf 来循环判断一遍，但在这个方法之前，让我们先看看最原始的方法：1234567891011121314151617181920var array = [1, 1, &apos;1&apos;, &apos;1&apos;];function unique(array) &amp;#123;    // temp用来存储结果    var temp = [];    for (var i = 0, arrayLe">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Array 去重">
+<meta property="og:url" content="https://yksdjx.github.io/2018/04/25/array/index.html">
 <meta property="og:site_name" content="...">
+<meta property="og:description" content="方法一：双层循环使用 indexOf 来循环判断一遍，但在这个方法之前，让我们先看看最原始的方法：1234567891011121314151617181920var array = [1, 1, &apos;1&apos;, &apos;1&apos;];function unique(array) &amp;#123;    // temp用来存储结果    var temp = [];    for (var i = 0, arrayLe">
+<meta property="og:updated_time" content="2018-04-28T07:57:39.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="...">
+<meta name="twitter:title" content="Array 去重">
+<meta name="twitter:description" content="方法一：双层循环使用 indexOf 来循环判断一遍，但在这个方法之前，让我们先看看最原始的方法：1234567891011121314151617181920var array = [1, 1, &apos;1&apos;, &apos;1&apos;];function unique(array) &amp;#123;    // temp用来存储结果    var temp = [];    for (var i = 0, arrayLe">
   
     <link rel="alternative" href="/atom.xml" title="..." type="application/atom+xml">
   
@@ -149,95 +154,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Es6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-array" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/10/Es6/">ES6</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/10/Es6/" class="archive-article-date">
-  	<time datetime="2018-07-10T11:28:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h2 id="object-js"><a href="#object-js" class="headerlink" title="object.js()"></a>object.js()</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">0</span> == <span class="number">-0</span>  <span class="comment">//true</span></span><br><span class="line">+<span class="number">0</span> === <span class="number">-0</span> <span class="comment">//true</span></span><br><span class="line"><span class="built_in">Object</span>.is(+<span class="number">0</span>,<span class="number">-0</span>)</span><br><span class="line"></span><br><span class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span> <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>,<span class="literal">NaN</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="Obect-assign-用于将所有课枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。"><a href="#Obect-assign-用于将所有课枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。" class="headerlink" title="Obect.assign()  用于将所有课枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。"></a>Obect.assign()  用于将所有课枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object1 = &#123;</span><br><span class="line">    fruit:<span class="string">'🍎'</span>,</span><br><span class="line">    drink: <span class="string">'🍺'</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> object2 = <span class="built_in">Object</span>.assign(&#123;<span class="attr">drink</span>:<span class="string">'🥛'</span>,<span class="attr">breakfast</span>:<span class="string">'🍪'</span>&#125;,object1);</span><br><span class="line"><span class="built_in">console</span>.log(object2);</span><br><span class="line"><span class="comment">/* &gt; Object &#123; drink: "🍺", breakfast: "🍪", fruit: "🍎" &#125; */</span></span><br></pre></td></tr></table></figure>
-<h3 id="Obect-setPrototypeOf"><a href="#Obect-setPrototypeOf" class="headerlink" title="Obect.setPrototypeOf"></a>Obect.setPrototypeOf</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> breakfast = &#123;</span><br><span class="line">    getDrink()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍵'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dinner = &#123;</span><br><span class="line">    getDrink() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍺'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> sunday = <span class="built_in">Object</span>.create(breakfast);</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()); <span class="comment">//🍵</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(sunday) === breakfast); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(sunday,dinner);</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()) <span class="comment">// 🍺</span></span><br></pre></td></tr></table></figure>
-<h3 id="object-protp"><a href="#object-protp" class="headerlink" title="object.__protp__"></a>object.__protp__</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> breakfast = &#123;</span><br><span class="line">    getDrink()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍵'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dinner = &#123;</span><br><span class="line">    getDrink() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍺'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> sunday = &#123;</span><br><span class="line">    __proto__: breakfast</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()); <span class="comment">//🍵</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(sunday) === breakfast); <span class="comment">// true</span></span><br><span class="line">sunday.__proto__ = dinner;</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()) <span class="comment">// 🍺</span></span><br></pre></td></tr></table></figure>
-<h3 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> breakfast = &#123;</span><br><span class="line">    getDrink()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍵'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dinner = &#123;</span><br><span class="line">    getDrink() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'🍺'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> sunday = &#123;</span><br><span class="line">    __proto__: breakfast,</span><br><span class="line">    getDrink() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.getDrink()+<span class="string">'🥛'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sunday.getDrink()); <span class="comment">//🍵🥛</span></span><br></pre></td></tr></table></figure>
-<h3 id="Iterators-迭代器"><a href="#Iterators-迭代器" class="headerlink" title="Iterators 迭代器"></a>Iterators 迭代器</h3><p>每次执行会返回 {value:’xxxx’,done:true/false}<br>自定义 迭代器<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chef</span>(<span class="params">foods</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        next()&#123;</span><br><span class="line">            <span class="keyword">let</span> done = (i &gt;= foods.length);</span><br><span class="line">            <span class="keyword">let</span> value = !done ? foods[i++] : <span class="literal">undefined</span>;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                value:value,</span><br><span class="line">                done:done</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> Nicholas = chef([<span class="string">'🍅'</span>,<span class="string">'🍳'</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: "🍅", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: "🍳", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">chef</span>(<span class="params">foods</span>) </span>&#123; <span class="comment">//生成器</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;foods.length;i++)&#123;</span><br><span class="line">       <span class="keyword">yield</span> foods[i]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> Nicholas = chef([<span class="string">'🍅'</span>,<span class="string">'🍳'</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: "🍅", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: "🍳", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Nicholas.next());<span class="comment">//&#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/10/Es6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-array" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/25/array/">Array 去重</a>
+    <h1 class="article-title" itemprop="name">
+      Array 去重
     </h1>
   
 
@@ -251,12 +175,62 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="方法一：双层循环"><a href="#方法一：双层循环" class="headerlink" title="方法一：双层循环"></a>方法一：双层循环</h2><p>使用 indexOf 来循环判断一遍，但在这个方法之前，让我们先看看最原始的方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// temp用来存储结果</span></span><br><span class="line">    <span class="keyword">var</span> temp = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, arrayLen = array.length; i &lt; arrayLen; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, tempLen = temp.length; j &lt; tempLen; j++ ) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] === temp[j]) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果array[i]是唯一的，那么执行完循环，j等于tempLen</span></span><br><span class="line">        <span class="keyword">if</span> (j === tempLen) &#123;</span><br><span class="line">            temp.push(array[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(array)); <span class="comment">// [1, "1"]</span></span><br></pre></td></tr></table></figure></p>
-<p>此方法中，使用了循环嵌套，外层循环array；里面循环temp,如果array[i]的值和temp[j]的值相等，就跳出循环。如果都不等于，说明元素是唯一的，这时候j的值就会等于temp的长度，根据这个特点进行判断，将值添加进temp. 通用性好，当是效率不高<br>
-        
-          <a class="article-more-a" href="/2018/04/25/array/#more">more >></a>
-        
+<p>此方法中，使用了循环嵌套，外层循环array；里面循环temp,如果array[i]的值和temp[j]的值相等，就跳出循环。如果都不等于，说明元素是唯一的，这时候j的值就会等于temp的长度，根据这个特点进行判断，将值添加进temp. 通用性好，当是效率不高<br><a id="more"></a></p>
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h3><p>用indexOf 简化内层循环<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>,<span class="number">1</span>,<span class="string">"1"</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unque</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>n;len = array.length;i&lt;len;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> current = array[i];</span><br><span class="line">        <span class="keyword">if</span>(temp.indexOf(current) === <span class="number">-1</span>)&#123;</span><br><span class="line">            temp.push(current);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(array);</span><br></pre></td></tr></table></figure></p>
+<p>如果对一个已经排好序的数组去重，效率会高于使用indexOf。</p>
+<h3 id="unique-API"><a href="#unique-API" class="headerlink" title="unique API"></a>unique API</h3><p>知道了这两种方法后，我们可以去尝试写一个名为 unique 的工具函数，我们根据一个参数 isSorted 判断传入的数组是否是已排序的，如果为 true，我们就判断相邻元素是否相同，如果为 false，我们就使用 indexOf 进行判断</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="string">'1'</span>, <span class="number">2</span>, <span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> array2 = [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="number">2</span>, <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一版</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array, isSorted</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    <span class="keyword">var</span> seen = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = array.length; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> value = array[i];</span><br><span class="line">        <span class="keyword">if</span> (isSorted) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!i || seen !== value) &#123;</span><br><span class="line">                res.push(value)</span><br><span class="line">            &#125;</span><br><span class="line">            seen = value;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (res.indexOf(value) === <span class="number">-1</span>) &#123;</span><br><span class="line">            res.push(value);</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(array1)); <span class="comment">// [1, 2, "1"]</span></span><br><span class="line"><span class="built_in">console</span>.log(unique(array2, <span class="literal">true</span>)); <span class="comment">// [1, "1", 2]</span></span><br></pre></td></tr></table></figure>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>尽管 unqique 已经可以试下去重功能，但是为了让这个 API 更加强大，我们来考虑一个需求：<br>新需求：字母的大小写视为一致，比如’a’和’A’，保留一个就可以了！<br>虽然我们可以先处理数组中的所有数据，比如将所有的字母转成小写，然后再传入unique函数，但是有没有方法可以省掉处理数组的这一遍循环，直接就在去重的循环中做呢？让我们去完成这个需求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array3 = [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'a'</span>, <span class="string">'A'</span>, <span class="number">2</span>, <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二版</span></span><br><span class="line"><span class="comment">// iteratee 英文释义：迭代 重复</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array, isSorted, iteratee</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    <span class="keyword">var</span> seen = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = array.length; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> value = array[i];</span><br><span class="line">        <span class="keyword">var</span> computed = iteratee ? iteratee(value, i, array) : value;</span><br><span class="line">        <span class="keyword">if</span> (isSorted) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!i || seen !== computed) &#123;</span><br><span class="line">                res.push(value)</span><br><span class="line">            &#125;</span><br><span class="line">            seen = computed;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (iteratee) &#123;</span><br><span class="line">            <span class="keyword">if</span> (seen.indexOf(computed) === <span class="number">-1</span>) &#123;</span><br><span class="line">                seen.push(computed);</span><br><span class="line">                res.push(value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (res.indexOf(value) === <span class="number">-1</span>) &#123;</span><br><span class="line">            res.push(value);</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(array3, <span class="literal">false</span>, <span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> item == <span class="string">'string'</span> ? item.toLowerCase() : item</span><br><span class="line">&#125;)); <span class="comment">// [1, "a", 2]</span></span><br></pre></td></tr></table></figure>
+<p>在这一版也是最后一版的实现中，函数传递三个参数：<br>array：表示要去重的数组，必填<br>isSorted：表示函数传入的数组是否已排过序，如果为 true，将会采用更快的方法进行去重<br>iteratee：传入一个函数，可以对每个元素进行重新的计算，然后根据处理的结果进行去重<br>至此，我们已经仿照着 underscore 的思路写了一个 unique 函数，具体可以查看</p>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>ES5 提供了filter 方法，简化外层循环<br>使用 indexOf 的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="string">"1"</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = arrat.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,array</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> array.indexOf(item) === index;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(unique(array));</span><br></pre></td></tr></table></figure></p>
+<p>排序去重的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> array.concat().sort().filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> !index || item !== array[index - <span class="number">1</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(array));</span><br></pre></td></tr></table></figure></p>
+<h3 id="Object-键值对"><a href="#Object-键值对" class="headerlink" title="Object 键值对"></a>Object 键值对</h3><p>利用一个空的 Object 对象，我们把数组的值存成 Object 的 key 值，比如 Object[value1] = true，在判断另一个值的时候，如果 Object[value2]存在的话，就说明该值是重复的。示例代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> array.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> obj.hasOwnProperty(item) ? <span class="literal">false</span> : (obj[item] = <span class="literal">true</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(unique(array)); <span class="comment">// [1, 2]</span></span><br></pre></td></tr></table></figure>
+<p>我们可以发现，是有问题的，因为 1 和 ‘1’ 是不同的，但是这种方法会判断为同一个值，这是因为对象的键值只能是字符串，所以我们可以使用 typeof item + item 拼成字符串作为 key 值来避免这个问题：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> array.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + item) ? <span class="literal">false</span> : (obj[<span class="keyword">typeof</span> item + item] = <span class="literal">true</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(array)); <span class="comment">// [1, 2, "1"]</span></span><br></pre></td></tr></table></figure>
+<p>然而，即便如此，我们依然无法正确区分出两个对象，比如 {value: 1} 和 {value: 2}，因为 typeof item + item 的结果都会是 object[object Object]，不过我们可以使用 JSON.stringify 将对象序列化：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [&#123;<span class="attr">value</span>: <span class="number">1</span>&#125;, &#123;<span class="attr">value</span>: <span class="number">1</span>&#125;, &#123;<span class="attr">value</span>: <span class="number">2</span>&#125;];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> array.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item))</span><br><span class="line">        <span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item)) ? <span class="literal">false</span> : (obj[<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item)] = <span class="literal">true</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique(array)); <span class="comment">// [&#123;value: 1&#125;, &#123;value: 2&#125;]</span></span><br></pre></td></tr></table></figure>
+<h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><p>使用 Set 和 Map 数据结构，以 Set 为例，ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [&#123;<span class="attr">a</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">b</span>:<span class="number">2</span>&#125;,&#123;<span class="attr">a</span>:<span class="number">1</span>&#125;];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.form(<span class="keyword">new</span> <span class="built_in">Set</span>(array))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var unique = array =&gt; [...new Set(array)]</span><br></pre></td></tr></table></figure></p>
+<p>还可以用Map</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> seen = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">    <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">a</span>) =&gt;</span> !seen.has(a) &amp;&amp; seen.set(a, <span class="number">1</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Set,Map的方法都不适用[{value:1},{value:1}]</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -276,16 +250,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/25/array/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://yksdjx.github.io/2018/04/25/array/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/07/10/Es6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ES6
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/08/animation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">requestAnimationFrame</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -305,505 +347,14 @@
 
 
 
-
   
-    <article id="post-animation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/animation/">requestAnimationFrame</a>
-    </h1>
   
 
-        
-        <a href="/2018/03/08/animation/" class="archive-article-date">
-  	<time datetime="2018-03-08T05:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="window-requestAnimationFrame"><a href="#window-requestAnimationFrame" class="headerlink" title="window.requestAnimationFrame"></a>window.requestAnimationFrame</h1><h4 id="告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用"><a href="#告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用" class="headerlink" title="告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用"></a>告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用</h4><blockquote>
-<p>*注意：若您想要在下次重绘时产生另一个动画画面，您的回调例程必须调用 requestAnimationFrame()。</p>
-</blockquote>
-<p>当你准备好更新屏幕画面时你就应该调用此方法。这会要求你的动画函数在浏览器下次重绘前执行。回调的次数常是每秒60次，但大多数浏览器通常匹配W3C所建议的刷新率。运行在后台标签页或者隐藏的 iframe里时， requestAnimationFrame()暂停调用以提升性能和电池寿命。</p>
-<p>回调函数会被传入一个参数，DOMHighResTimeStamp，提示当前被requestAnimationFrame()排序的回调函数被触发的时间。即使每个回调函数的工作量的计算都花了时间，单个帧中的多个回调也都将被传入相同的时间戳。该时间戳是一个十进制数，单位毫秒，最小精度为1ms(µs).<br>
-        
-          <a class="article-more-a" href="/2018/03/08/animation/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/08/animation/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-prototype" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/28/prototype/">继承和原型链</a>
-    </h1>
   
 
-        
-        <a href="/2018/02/28/prototype/" class="archive-article-date">
-  	<time datetime="2018-02-28T02:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基于原型链的继承"><a href="#基于原型链的继承" class="headerlink" title="基于原型链的继承"></a>基于原型链的继承</h1><h2 id="继承属性"><a href="#继承属性" class="headerlink" title="继承属性"></a>继承属性</h2><p>万物皆对象，JavaScript 对象有一个指向一个原型对象的链。当试图方位一个对象属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或达到原型链的末尾。<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">Javascript继承机制的设计思想(见阮老师文章)</a> </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/28/prototype/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-console" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/24/console/">console 知多少</a>
-    </h1>
   
 
-        
-        <a href="/2018/02/24/console/" class="archive-article-date">
-  	<time datetime="2018-02-24T12:13:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="console"><a href="#console" class="headerlink" title="console"></a>console</h1><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><blockquote>
-<p>console.assert();<br>判断一个阐述是否为真，false的话 会抛出异常并且在控制台输出相应信息。</p>
-</blockquote>
-<p><img src="/img/console1.png" alt="console.assert"></p>
-<blockquote>
-<p>console.clear()<br>清空控制台</p>
-</blockquote>
-<p><img src="/img/console2.png" alt="console.clear"><br><img src="/img/console3.png" alt="console.clear"><br>
-        
-          <a class="article-more-a" href="/2018/02/24/console/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/24/console/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-node-express-websocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/08/node-express-websocket/">node express websocket</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/08/node-express-websocket/" class="archive-article-date">
-  	<time datetime="2018-02-08T10:53:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>===</p>
-<h3 id="Websocket-是什么？"><a href="#Websocket-是什么？" class="headerlink" title="Websocket 是什么？"></a>Websocket 是什么？</h3><p>–网络定义:<br><a href="https://zh.wikipedia.org/zh-cn/WebSocket" target="_blank" rel="noopener">WebSocket</a>是HTML5开始提供的一种浏览器与服务器间进行全双工通讯的网络技术。 WebSocket通信协议于2011年被IETF定为标准RFC 6455，WebSocketAPI被W3C定为标准。 在WebSocket API中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/img/websocket.png" alt="http-webSocket"></h2>
-        
-          <a class="article-more-a" href="/2018/02/08/node-express-websocket/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/08/node-express-websocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-browsers-work" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/23/browsers-work/">browsers_work</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/23/browsers-work/" class="archive-article-date">
-  	<time datetime="2018-01-23T12:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为什么要了解浏览器加载、解析、渲染这个过程？</p>
-<p>好，我们先说一下，为什么要了解这些呢？如果想写出一个最佳实践的页面，就要好好了解。</p>
-<p>了解浏览器如何进行加载，可以在引用外部样式文件，外部js时，将他们放到合适的位置，使浏览器以最快的速度将文件加载完毕。<br>了解浏览器如何进行解析，可以在构建DOM结构，组织css选择器时，选择最优的写法，提高浏览器的解析速率。<br>了解浏览器如何进行渲染，明白渲染的过程，在设置元素属性，编写js文件时，可以减少”reflow“”repaint“的消耗。<br>
-        
-          <a class="article-more-a" href="/2018/01/23/browsers-work/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/23/browsers-work/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-first" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/first/">first</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/first/" class="archive-article-date">
-  	<time datetime="2018-01-16T08:03:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如何处理IE和Firefox如果处理事件兼容性</p>
-<p>获取事件<br>function et(e) {<br>    let event = window.event || e<br>}<br>键盘值的获取： Firfox下event.which和IE的event.keyCode相当<br>let key = event.keyCode || event.which<br>事件源的获取：<br>let target = event.srcElement || event.target<br>事件监听:<br>IE: element.attacthEvent(‘on’ + eventName, function(){})<br>Firfox: element.addEventListener(eventName, handler, false)<br>鼠标位置： 在IE下，event对象有x、y属性，在Firfox下，event有PageX, PageY属性 所有获取鼠标位置时：<br>x = event.x || event.pageX<br>阻止默认浏览器行为：<br>e.preventDefault() || event.returnValue = false<br>阻止冒泡事件：<br>e.stopPropagation() || event.cancelBubble = true<br>获取下拉框中选中项的内容<br>
-        
-          <a class="article-more-a" href="/2018/01/16/first/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/first/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/hello-world/" class="archive-article-date">
-  	<time datetime="2018-01-16T05:57:00.640Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -826,8 +377,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
